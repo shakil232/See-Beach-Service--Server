@@ -73,6 +73,11 @@ client.connect(err => {
             })
     });
 
+      // UpDateStatus
+        // app.patch('/upDateStatus' , (req , res) =>{
+        //     AddServiceCollection.updateOne({})
+        // })
+
 
     //  BookingAREA
     // BookedRide
@@ -147,13 +152,16 @@ client.connect(err => {
     });
 
     //conditional rendering Admin
-    // app.post("/isAdmin", (req, res) => {
-    //     const email = req.body.email;
-    //     AdminCollection.find({ email: email })
-    //     .toArray((err, documents) => {
-    //         res.send(documents.length > 0);
-    //     });
-    // });
+    app.post('/isAdmin', (req, res) => {
+        const email = req.body.email;
+        AdminCollection.find({ AdminEmail: email })
+        .toArray((err, documents) => {
+            console.log(documents)
+            res.send(documents.length > 0);
+        });
+    });
+
+  
 
 });
 
